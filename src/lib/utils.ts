@@ -1,7 +1,7 @@
 import { replaceText } from "./replace";
 
-const apiKey = process?.env?.chatgpt_api;
-const monlam_api = process?.env?.monlam_api;
+const apiKey = import.meta.env.VITE_chatgpt_api;
+const monlam_api = import.meta.env.VITE_monlam_api;
 function detectTibetan(text) {
   const tibetanRegex = /[\u0F00-\u0FFF]/;
   return tibetanRegex.test(text);
