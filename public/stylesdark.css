@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Monlam';
-  src: url('/font/MonlamTBslim.woff2') format('woff2'),
-       url('/font/MonlamTBslim.woff') format('woff'),
-       url('/font/MonlamTBslim.ttf') format('truetype');
+  src: url('font/MonlamTBslim.woff2') format('woff2'),
+       url('font/MonlamTBslim.woff') format('woff'),
+       url('font/MonlamTBslim.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -21,20 +21,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
 }
-.root-div{
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
+
 .container {
   background-color: #2d2b2b;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 100vw;
 
   top: 20px;
   padding: 20px;
@@ -138,7 +132,7 @@ margin-right: auto;
 margin-top: auto;
 margin-bottom: auto;
 position: absolute;
-top: 30%;
+top: 200px;
 color: #007bff;
 }
 #new-topik{
@@ -156,7 +150,7 @@ top: 6px; position: absolute;
 
   @media (max-width: 600px) {
     .container {
-      width: 95%;
+      width: 100vw;
       padding: 10px;
       height: auto;
       border-radius: 5px;
