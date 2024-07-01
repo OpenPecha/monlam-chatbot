@@ -6,7 +6,7 @@ import { addMessageToChatBox, processUserMessage } from "../lib/utils";
 
 const ChatComponent = () => {
   const [userInput, setUserInput] = useState("");
-  function send() {
+  function send(e) {
     const message = userInput;
     if (message.trim() === "") return;
     addMessageToChatBox(message, "user");

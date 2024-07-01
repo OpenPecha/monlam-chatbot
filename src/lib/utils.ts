@@ -1,7 +1,8 @@
 import { replaceText } from "./replace";
 
 const apiKey = import.meta.env.VITE_chatgpt_api;
-const monlam_api = import.meta.env.VITE_monlam_api;
+const AccessKey = import.meta.env.VITE_monlam_access_key;
+
 function detectTibetan(text) {
   const tibetanRegex = /[\u0F00-\u0FFF]/;
   return tibetanRegex.test(text);
@@ -35,23 +36,18 @@ async function getChatGPTResponse(message) {
 }
 
 async function translateText(text, targetLanguage) {
-  const languageCode = targetLanguage === "en" ? "<2en>" : "<2bo>";
+  let url = "https://api.monlam.ai" + "/mt/playground";
+  let formData = new FormData();
+  formData.append("input", text);
+  formData.append("direction", targetLanguage);
   try {
-    const response = await fetch(
-      "https://rvx0i2sheyjtydoh.us-east-1.aws.endpoints.huggingface.cloud",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          Authorization: monlam_api,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          inputs: languageCode + text,
-          parameters: {},
-        }),
-      }
-    );
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "x-api-key": AccessKey,
+      },
+      body: formData,
+    });
 
     if (!response.ok) {
       const errorDetails = await response.text();
@@ -61,11 +57,12 @@ async function translateText(text, targetLanguage) {
     }
 
     const data = await response.json();
-    if (!data || !data[0] || !data[0].generated_text) {
+
+    if (!data || !data.translation) {
       throw new Error("Invalid response from translation API");
     }
 
-    let translatedText = data[0].generated_text;
+    let translatedText = data.translation;
 
     translatedText = replaceText(translatedText);
     translatedText = addNewLineBeforeText(translatedText, "གཉིས་པ་ནི།");
