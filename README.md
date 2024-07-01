@@ -1,3 +1,5 @@
+markdown
+
 # React + TypeScript + Vite
 
 This project provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -6,8 +8,8 @@ This project provides a minimal setup to get React working in Vite with HMR and 
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed Node.js (>= 14.x) and npm (>= 6.x).
-- You have a terminal or command line interface available.
+- Node.js (>= 14.x) and npm (>= 6.x) installed.
+- A terminal or command line interface available.
 
 ## Getting Started
 
@@ -16,27 +18,25 @@ Follow these steps to get the project up and running locally.
 ### 1. Clone the repository
 
 ```sh
-git clone https://github.com/OpenPecha/monlam-chatbot/tree/main
+git clone https://github.com/OpenPecha/monlam-chatbot.git
 cd monlam-chatbot
 ```
 
-### 2. set up environment variable
+### 2. Set up environment variables
 
-make a .env file in the root folder with following data:
+Create a .env file in the root folder with the following content:
 
-VITE_chatgpt_api= ###---
-VITE_monlam_access_key= ###---
+VITE_chatgpt_api=your_chatgpt_api_key
+VITE_monlam_access_key=your_monlam_access_key
 
-### 3. npm install
+### 3. Install dependencies
 
-```sh
 npm install
-```
 
-### 4. npm run dev
+### 4. Start the development server
 
-```sh
 npm run dev
-```
 
-enjoy the app
+You can now view your application in the browser.
+
+Enjoy the app!
