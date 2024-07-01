@@ -31,11 +31,15 @@ VITE_monlam_access_key=your_monlam_access_key
 
 ### 3. Install dependencies
 
+```sh
 npm install
+```
 
 ### 4. Start the development server
 
+```sh
 npm run dev
+```
 
 You can now view your application in the browser.
 
