@@ -28,7 +28,7 @@ body {
   background-color: #2d2b2b;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100vw;
+  width: 90vw;
 
   top: 20px;
   padding: 20px;
@@ -82,7 +82,7 @@ color: white;
 .input-container {
   display: flex;
 position: fixed;
-width: 98.1%;
+width: 88.5%;
 margin-left: 10px;
 margin-bottom: 20px;
 bottom: 0px;
