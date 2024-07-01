@@ -1,5 +1,4 @@
-
-function replaceText(text) {
+export function replaceText(text) {
   let regex = /([༠-༩]{2})([ཀ-ྼ])/g;
   text = text.replaceAll(regex, '$1 $2');
   text = text.replaceAll('མཚན་རྟགས།', 'ནང་འཛུལ།');
@@ -1032,8 +1031,5 @@ function replaceText(text) {
   text = text.replaceAll(/༦ /g, "\n༦ ");
   text = text.replaceAll(/༧ /g, "\n༧ ");
 
-  
-  return text.replace(/oldWord/g, 'newWord');
+  return text.replace(/oldWord/g, "newWord");
 }
-
-
