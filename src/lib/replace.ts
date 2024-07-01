@@ -19,6 +19,7 @@ export function replaceText(text) {
   text = text.replaceAll('གཡག་གི་འོ་མ', 'འབྲིའི་འོ་མ');
   text = text.replaceAll('གཡག་གི་ཕྱུར་བ', 'འབྲིའི་མའི་ཕྱུར་བ');
   text = text.replaceAll('གཡག་ཇ་', 'འབྲི་ཇ་');
+  text = text.replaceAll('གཡག་གི་བུ་', 'འབྲིའི་བུ་');
 
   
   
