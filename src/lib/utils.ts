@@ -115,7 +115,7 @@ function addMessageToChatBox(message, sender) {
   chatBox.scrollTop = chatBox?.scrollHeight;
 }
 
-async function processUserMessage(message) {
+async function processUserMessage(message, setIsLoading) {
   const loading = document.getElementById("loading");
   try {
     const isTibetan = detectTibetan(message);
@@ -123,12 +123,14 @@ async function processUserMessage(message) {
       message = await translateText(message, "en");
     }
     loading.style.display = "flex";
+    setIsLoading(true);
     await getChatGPTResponse(message);
   } catch (error) {
     console.error("Error:", error);
     addMessageToChatBox("Error: Could not process message", "bot");
   } finally {
     loading.style.display = "none";
+    setIsLoading(false);
   }
 }
 

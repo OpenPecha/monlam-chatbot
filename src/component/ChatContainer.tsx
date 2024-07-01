@@ -6,12 +6,14 @@ import { addMessageToChatBox, processUserMessage } from "../lib/utils";
 
 const ChatComponent = () => {
   const [userInput, setUserInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   function send(e) {
+    e.preventDefault();
     const message = userInput;
     if (message.trim() === "") return;
     addMessageToChatBox(message, "user");
     setUserInput("");
-    processUserMessage(message);
+    processUserMessage(message, setIsLoading);
   }
 
   return (
@@ -40,7 +42,7 @@ const ChatComponent = () => {
 
       <div id="chat-box"></div>
       <Loading />
-      <div className="input-container">
+      <form onSubmit={send} className="input-container">
         <input
           type="text"
           id="user-input"
@@ -48,14 +50,14 @@ const ChatComponent = () => {
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />
-        <button id="send-button" onClick={send}>
+        <button id="send-button" disabled={isLoading} type="submit">
           <img
             id="send-icon"
             src="data:image/svg+xml;base64,PHN2ZyBpZD0ic2VuZC1pY29uIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiBmaWxsPSIjZmZmZmZmIj48cGF0aCBkPSJNMi4wMSAyMUwyMyAxMiAyLjAxIDMgMiAxMGwxNSAyLTE1IDJ6Ii8+PC9zdmc+"
             alt="Send"
           />
         </button>
-      </div>
+      </form>
     </div>
   );
 };
