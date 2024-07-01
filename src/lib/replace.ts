@@ -51,6 +51,9 @@ export function replaceText(text) {
 
 
   text = text.replaceAll('ཀྲུང་གོའི་', 'རྒྱ་ནག་གི་');
+  
+
+  
 //   text = text.replaceAll('ཏཱ་ལའི་བླ་མ་མཆོག་གིས་', 'ཁོང་གིས་');
 //   text = text.replaceAll('ཏཱ་ལའི་བླ་མ་', 'ཁོང་');
 //   text = text.replaceAll('ཏཱ་ལའི་བླ་མས་', '');
@@ -1031,6 +1034,8 @@ export function replaceText(text) {
   text = text.replaceAll(/༥ /g, "\n༥ ");
   text = text.replaceAll(/༦ /g, "\n༦ ");
   text = text.replaceAll(/༧ /g, "\n༧ ");
+  text = text.replaceAll(/ཨཱཿ/g, "");
+
 
   return text.replace(/oldWord/g, "newWord");
 }
