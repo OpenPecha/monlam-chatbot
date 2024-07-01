@@ -20,9 +20,9 @@ git clone https://github.com/OpenPecha/monlam-chatbot/tree/main
 cd monlam-chatbot
 ```
 
-### 2. setUp .env
+### 2. set up environment variable
 
-## generate a .env file in the root folder with following data:
+make a .env file in the root folder with following data:
 
 VITE_chatgpt_api= ###---
 VITE_monlam_access_key= ###---
