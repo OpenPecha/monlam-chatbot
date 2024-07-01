@@ -82,8 +82,9 @@ color: white;
 .input-container {
   display: flex;
 position: fixed;
-bottom: 10px;
-width: 80%;
+width: 98.1%;
+margin-left: 10px;
+margin-bottom: 20px;
 }
 
 #user-input {
@@ -174,6 +175,8 @@ top: 6px; position: absolute;
     .input-container{
       width: 95%;
       margin-bottom: 20px;
+      width: 98.1%;
+      margin-left: 10px;
     }
     h1{
       font-size: 20px;
