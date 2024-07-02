@@ -92,7 +92,7 @@ export function replaceText(text) {
   text = text.replaceAll("ལ་ངེས་ཚིག་མི་སྟེར་བ", "");
   text = text.replaceAll("<unk>", "");
   text = text.replaceAll("[DONE]", "");
-  text = text.replaceAll("༸ཏཱ་ལའི་བླ་མས་", "ཁོང་གིས");
+ // text = text.replaceAll("༸ཏཱ་ལའི་བླ་མས་", "ཁོང་གིས");
   text = text.replaceAll("སྐེ་རགས་དང་རྒྱ་ལམ", "རྒྱུད་གཅིག་ལམ་གཅིག");
   text = text.replaceAll("སྐེ་རགས་དང་རྒྱ་ལམ་གྱི", "རྒྱུད་གཅིག་ལམ་གཅིག་གི");
   text = text.replaceAll("Beltདང་ལམ་གྱི", "རྒྱུད་གཅིག་ལམ་གཅིག་གི");
@@ -842,7 +842,7 @@ export function replaceText(text) {
   text = text.replaceAll("ལུང་དུ་མ་བསྟན་པ་", "ལུང་དུ་མ་བསྟན་པ་");
   //
   text = text.replaceAll("ཅིག་གྱི", "ཅིག་གི");
-  text = text.replaceAll("ཏཱ་ལའི་བླ་མ་མཆོག་གིས", "ཁོང་གིས");
+  //text = text.replaceAll("ཏཱ་ལའི་བླ་མ་མཆོག་གིས", "ཁོང་གིས");
   text = text.replaceAll("བོད་དབུས་ཤར་ཁུལ", "དབུས་ཤར་ཁུལ");
   text = text.replaceAll("ཨིན་ཇིའི་རྒྱལ་ཁབ་མང་པོ", "རྒྱལ་ཁབ་མང་པོ");
   text = text.replaceAll("ཨིན་ཅི་གྲོས་ཚོགས", "གྲོས་ཚོགས");
@@ -861,7 +861,7 @@ export function replaceText(text) {
   text = text.replaceAll("ཕྱི་ལོ་ ༢༠༠༨ ལོར", "");
   text = text.replaceAll("ཕྱི་ལོ་ ༢༠༠༨ ལོའི་", "");
   text = text.replaceAll("ཕྱི་ལོ་༢༠༠༨ ལོའི་", "");
-  text = text.replaceAll("༸ཏཱ་ལའི་བླ་མ།", "");
+//   text = text.replaceAll("༸ཏཱ་ལའི་བླ་མ།", "");
   text = text.replaceAll("ངོས་ཀྱིས་", "ངས་");
   text = text.replaceAll("ངོས་ཀྱི་", "ང་རང་གི་");
   text = text.replaceAll("ལམ་སྲང་དང་སྐ་རགས", "རྒྱུད་གཅིག་ལམ་གཅིག");
@@ -869,7 +869,7 @@ export function replaceText(text) {
   text = text.replaceAll("ཨིན་ཅི་", "");
   text = text.replaceAll("གུ་གལ་", "གྷུས་གྷལ");
   text = text.replaceAll("མེད་མིན་གྱི་", "ཡོད་མེད་ཀྱི་");
-  text = text.replaceAll("ཏཱ་ལའི་བླ་མ་མཆོག་གིས", "ཁོང་གིས");
+//   text = text.replaceAll("ཏཱ་ལའི་བླ་མ་མཆོག་གིས", "ཁོང་གིས");
   text = text.replaceAll("བོད་དབུས་ཤར་ཁུལ", "དབུས་ཤར་ཁུལ");
   text = text.replaceAll("ཨིན་ཇིའི་རྒྱལ་ཁབ་མང་པོ", "རྒྱལ་ཁབ་མང་པོ");
   text = text.replaceAll("ཨིན་ཅི་གྲོས་ཚོགས", "གྲོས་ཚོགས");
@@ -880,7 +880,7 @@ export function replaceText(text) {
   text = text.replaceAll("ཕྱི་ལོ་ ༢༠༠༨ ལོའི་", "");
   text = text.replaceAll("ཕྱི་ལོ་༢༠༠༨ ལོའི་", "");
   text = text.replaceAll("ཕྱི་ལོ་༡༩༥༩ ལོའི་", "");
-  text = text.replaceAll("༸ཏཱ་ལའི་བླ་མ།", "");
+//   text = text.replaceAll("༸ཏཱ་ལའི་བླ་མ།", "");
   text = text.replaceAll("ངོས་ཀྱིས་", "ངས་");
   text = text.replaceAll("ངོས་ཀྱི་", "ང་རང་གི་");
   text = text.replaceAll("ལམ་སྲང་དང་སྐ་རགས", "རྒྱུད་གཅིག་ལམ་གཅིག");
