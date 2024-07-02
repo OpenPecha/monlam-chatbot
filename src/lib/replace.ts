@@ -20,6 +20,14 @@ export function replaceText(text) {
   text = text.replaceAll('གཡག་གི་ཕྱུར་བ', 'འབྲིའི་མའི་ཕྱུར་བ');
   text = text.replaceAll('གཡག་ཇ་', 'འབྲི་ཇ་');
   text = text.replaceAll('གཡག་གི་བུ་', 'འབྲིའི་བུ་');
+  text = text.replaceAll('༡ ཉན་ཐོས་ཀྱི་སྡོམ་པ།', '');
+  text = text.replaceAll('ཨེེ།', '');
+  text = text.replaceAll('ཀུ་གུལ', 'གྷུས་གྷུལ');
+  text = text.replaceAll('ཨེེ།', '');
+  text = text.replaceAll('༡༠ ཉན་རྣ་བྱེད་པའི་ལྟུང་བྱེད་འབའ་ཞིག་པ།', '');
+  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ། །', '');
+  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ།།', '');
+  text = text.replaceAll('ཨཱཏྨ་ཀོ྅ཧཾ།', '');
 
   
   
