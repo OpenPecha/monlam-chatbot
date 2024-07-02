@@ -1031,8 +1031,17 @@ export function replaceText(text) {
   text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ། །', '');
   text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ།།', '');
   text = text.replaceAll('ཨཱཏྨ་ཀོ྅ཧཾ།', '');
+  text = text.replaceAll('ཕོ་ཆའི', 'བོད་ཇའི');
+  text = text.replaceAll('ཕོ་ཆ་', 'བོད་ཇ་');
+  text = text.replaceAll('འབྲིའི་མར་ཇ', 'འབྲི་མར་གྱིས་བཟོས་པའི་ཇ');
+
+  text = text.replaceAll('རྩམ་པ་སྲེག་མ་ལས', 'ནས་བརྔོས་མ་ལས');
+  text = text.replaceAll('གཡག་ཞོ་', 'འབྲི་ཞོ་');
+  text = text.replaceAll('གཡག་འོ་མ་', 'འབྲིའི་འོ་མ་');
+  text = text.replaceAll('བསྲེས་ཏེ་ཀྱང་ཟ', 'བསྲེས་ཏེ་ཟ');
+  text = text.replaceAll('ལྷན་ཅིག་ཏུ་འབྱར་ཡང་ལྷུང་བཟེད་ལ་མི་འབྱར་བར་བྱའོ།', '');
   
-  
+
   text = text.replaceAll(/M/g, "");
   
   
