@@ -18,16 +18,10 @@ export function replaceText(text) {
   text = text.replaceAll('གཡག་གི་མར', 'འབྲིའི་མར');
   text = text.replaceAll('གཡག་གི་འོ་མ', 'འབྲིའི་འོ་མ');
   text = text.replaceAll('གཡག་གི་ཕྱུར་བ', 'འབྲིའི་མའི་ཕྱུར་བ');
-  text = text.replaceAll('གཡག་ཇ་', 'འབྲི་ཇ་');
+  text = text.replaceAll('གཡག་ཇ་', 'བོད་ཇ་');
   text = text.replaceAll('གཡག་གི་བུ་', 'འབྲིའི་བུ་');
-  text = text.replaceAll('༡ ཉན་ཐོས་ཀྱི་སྡོམ་པ།', '');
-  text = text.replaceAll('ཨེེ།', '');
-  text = text.replaceAll('ཀུ་གུལ', 'གྷུས་གྷུལ');
-  text = text.replaceAll('ཨེེ།', '');
-  text = text.replaceAll('༡༠ ཉན་རྣ་བྱེད་པའི་ལྟུང་བྱེད་འབའ་ཞིག་པ།', '');
-  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ། །', '');
-  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ།།', '');
-  text = text.replaceAll('ཨཱཏྨ་ཀོ྅ཧཾ།', '');
+  
+  
 
   
   
@@ -1026,9 +1020,17 @@ export function replaceText(text) {
   text = text.replaceAll("ཇོ་མོ་གླང་མ་གྱི་རི་ཡིན", "ཇོ་མོ་གླང་མ་ཡིན");
   text = text.replaceAll("བློ་བཟང་དོན་ལམ", "བློ་བཟང་སྨོན་ལམ");
   text = text.replaceAll("བློ་བཟང་དབོན་ལམ", "བློ་བཟང་སྨོན་ལམ");
+  text = text.replaceAll('༡ ཉན་ཐོས་ཀྱི་སྡོམ་པ།', '');
+  text = text.replaceAll('ཉན་ཐོས་ཀྱི་སྡོམ་པ།', '');
   
 
-  
+  text = text.replaceAll('ཨེེ།', '');
+  text = text.replaceAll('ཀུ་གུལ', 'གྷུས་གྷུལ');
+  text = text.replaceAll('ཨེེ།', '');
+  text = text.replaceAll('༡༠ ཉན་རྣ་བྱེད་པའི་ལྟུང་བྱེད་འབའ་ཞིག་པ།', '');
+  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ། །', '');
+  text = text.replaceAll('་ཧཱུྃ་བཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃ།།', '');
+  text = text.replaceAll('ཨཱཏྨ་ཀོ྅ཧཾ།', '');
   
   
   text = text.replaceAll(/M/g, "");
