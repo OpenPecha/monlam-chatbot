@@ -30,6 +30,19 @@ const ChatComponent = () => {
       >
         <Reloader />
         <ThemeSwitch />
+        <div className="lang-box">
+        <span className="lang">བོད།</span>
+        <label className="switch">
+        <input id="lang-checkbox" type="checkbox" 
+        onChange={handleCheckboxChange}
+        
+        />
+        <span className="slider round"></span>
+        </label>
+        <span className="lang">EN</span>
+    </div>
+    <p  id="checkbox-message"></p>
+
         <h1>
           <img
             style={{ width: 50, position: "relative", top: 10, marginRight: 8 }}
