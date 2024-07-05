@@ -114,10 +114,14 @@ bottom: 0px;
 }
 
 .loading {
+  right: 50%;
   display: none;
-  justify-content: center;
   align-items: center;
   height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  bottom: 150px;
 }
 
 .loading img {
