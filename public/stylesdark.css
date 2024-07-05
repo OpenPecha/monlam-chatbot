@@ -117,14 +117,15 @@ cursor: pointer;
 }
 
 .loading {
-  right: 50%;
+  right: 53%;
   display: none;
   align-items: center;
   height: 50px;
   margin-left: auto;
   margin-right: auto;
   position: fixed;
-  bottom: 150px;
+  bottom: 250px;
+  z-index: 999;
 }
 
 .loading img {
