@@ -3,30 +3,32 @@ import { replaceText } from "./replace";
 const apiKey = import.meta.env.VITE_chatgpt_api;
 const AccessKey = import.meta.env.VITE_monlam_access_key;
 
+let conversationHistory = [];
+
 function detectTibetan(text) {
-  const tibetanRegex = /[\u0F00-\u0FFF]/;
-  return tibetanRegex.test(text);
+  return /[\u0F00-\u0FFF]/.test(text);
 }
 
 async function getChatGPTResponse(message) {
-  const url = "https://api.openai.com/v1/chat/completions";
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${apiKey}`,
-  };
-  const body = {
-    model: "gpt-4",
-    messages: [{ role: "user", content: message }],
-  };
-
   try {
-    const response = await fetch(url, {
+    conversationHistory.push({ role: "user", content: message });
+    
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-4",
+        messages: conversationHistory,
+      }),
     });
-    const data = await response.json();
-    const botMessage = data.choices[0].message.content;
+    const { choices } = await response.json();
+    const botMessage = choices[0].message.content;
+    
+    conversationHistory.push({ role: "assistant", content: botMessage });
+    
     const translatedMessage = await translateTextBySentence(botMessage, "bo");
     addMessageToChatBox(translatedMessage, "bot");
   } catch (error) {
@@ -36,57 +38,30 @@ async function getChatGPTResponse(message) {
 }
 
 async function translateText(text, targetLanguage) {
-  let url = "https://api.monlam.ai" + "/mt/playground";
-  let formData = new FormData();
-  formData.append("input", text);
-  formData.append("direction", targetLanguage);
   try {
-    const response = await fetch(url, {
+    const formData = new FormData();
+    formData.append("input", text);
+    formData.append("direction", targetLanguage);
+    
+    const response = await fetch("https://api.monlam.ai/mt/playground", {
       method: "POST",
-      headers: {
-        "x-api-key": AccessKey,
-      },
+      headers: { "x-api-key": AccessKey },
       body: formData,
     });
 
-    if (!response.ok) {
-      const errorDetails = await response.text();
-      throw new Error(
-        `Translation API error: ${response.statusText}, Details: ${errorDetails}`
-      );
-    }
+    if (!response.ok) throw new Error(`Translation API error: ${response.statusText}`);
 
-    const data = await response.json();
+    const { translation } = await response.json();
+    if (!translation) throw new Error("Invalid response from translation API");
 
-    if (!data || !data.translation) {
-      throw new Error("Invalid response from translation API");
-    }
-
-    let translatedText = data.translation;
-
-    translatedText = replaceText(translatedText);
-    translatedText = addNewLineBeforeText(translatedText, "གཉིས་པ་ནི།");
-    translatedText = addNewLineBeforeText(translatedText, "གསུམ་པ་ནི།");
-    translatedText = addNewLineBeforeText(translatedText, "བཞི་པ་ནི།");
-    translatedText = addNewLineBeforeText(translatedText, "ལྔ་པ་ནི།");
-
-    return translatedText;
-  } catch (error) {
-    console.error(
-      `Error during translation API call for text: "${text}"`,
-      error
+    return ["གཉིས་པ་ནི།", "གསུམ་པ་ནི།", "བཞི་པ་ནི།", "ལྔ་པ་ནི།"].reduce(
+      (text, phrase) => text.replaceAll(phrase, "\n" + phrase),
+      replaceText(translation)
     );
+  } catch (error) {
+    console.error(`Error during translation: "${text}"`, error);
     throw error;
   }
-}
-
-function containsOnlyTibetanNumbers(text) {
-  const tibetanNumberRegex = /^[༠-༩\s]+$/;
-  return tibetanNumberRegex.test(text);
-}
-
-function addNewLineBeforeText(text, searchText) {
-  return text.replaceAll(searchText, "\n" + searchText);
 }
 
 async function translateTextBySentence(text, targetLanguage) {
@@ -94,23 +69,19 @@ async function translateTextBySentence(text, targetLanguage) {
   const translatedSentences = await Promise.all(
     sentences.map((sentence) => translateText(sentence, targetLanguage))
   );
-
-  return translatedSentences
-    .filter(
-      (translatedSentence) => !containsOnlyTibetanNumbers(translatedSentence)
-    )
-    .join(" ");
+  return translatedSentences.filter((s) => !/^[༠-༩\s]+$/.test(s)).join(" ");
 }
-function addMessageToChatBox(message, sender) {
-  const messageElement = document.createElement("div");
-  const chatBox = document.getElementById("chat-box");
 
+function addMessageToChatBox(message, sender) {
+  const chatBox = document.getElementById("chat-box");
+  const messageElement = document.createElement("div");
   messageElement.classList.add("message", `${sender}-message`);
+  
   const img = document.createElement("img");
   img.src = sender === "user" ? "icons/bo-lang.png" : "icons/icon128.png";
   messageElement.appendChild(img);
-  const textNode = document.createTextNode(message);
-  messageElement.appendChild(textNode);
+  
+  messageElement.appendChild(document.createTextNode(message));
   chatBox?.appendChild(messageElement);
   chatBox.scrollTop = chatBox?.scrollHeight;
 }
@@ -118,13 +89,13 @@ function addMessageToChatBox(message, sender) {
 async function processUserMessage(message, setIsLoading) {
   const loading = document.getElementById("loading");
   try {
-    const isTibetan = detectTibetan(message);
-    if (isTibetan) {
-      message = await translateText(message, "en");
+    let translatedMessage = message;
+    if (detectTibetan(message)) {
+      translatedMessage = await translateText(message, "en");
     }
     loading.style.display = "flex";
     setIsLoading(true);
-    await getChatGPTResponse(message);
+    await getChatGPTResponse(translatedMessage);
   } catch (error) {
     console.error("Error:", error);
     addMessageToChatBox("Error: Could not process message", "bot");
@@ -135,8 +106,6 @@ async function processUserMessage(message, setIsLoading) {
 }
 
 export {
-  addNewLineBeforeText,
-  containsOnlyTibetanNumbers,
   detectTibetan,
   getChatGPTResponse,
   translateText,
